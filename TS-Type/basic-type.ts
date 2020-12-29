@@ -36,12 +36,21 @@ const check: boolean = true;
 
 // TS enum
 enum Avenger {
-  Capt,
-  Hi,
-  Hello,
+  Capt = 1, // 인덱스를 1부터 시작하게 변경, 즉 Avenger[1] == Capt
+  Hi, // Avenger[2] == Hi
+  Hello, // Avenger[3] == Hello
+}
+
+enum Test {
+  Red = 1,
+  Green = 2,
+  Blue = 4,
 }
 
 const hero1: Avenger = Avenger.Hi;
+const hero2: string = Avenger[1];
+const hero3: Test = Test.Blue;
+const hero4: string = Test[2];
 
 // TS any
 const hi: any = "hi";
