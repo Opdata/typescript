@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "allowJs": true, // Javascript allow
-    "checkJs": true, // Ts-check
-    "noImplicitAny": true // Any type require
-  }
-}
