@@ -115,3 +115,25 @@ GenericProduct.forEach((email) => {
   const selectTag = document.querySelector("#email-dropdown");
   selectTag.appendChild(item);
 });
+
+/* 위를 더 개선한 코드 부분 */
+
+// function GenericCreateDropdown<T>(item: GenericItem<T> | GenericItem<T>) { // 함수 정의부분과 매개변수 Generic 추가
+//   const option = document.createElement("option");
+//   option.value = item.value.toString();
+//   option.innerText = item.value.toString();
+//   option.selected = item.selected;
+//   return option;
+// }
+
+// GenericEmail.forEach((email) => {
+//   const item = GenericCreateDropdown<string>(email); // Generic 추가
+//   const selectTag = document.querySelector("#email-dropdown");
+//   selectTag.appendChild(item);
+// });
+
+// GenericProduct.forEach((email) => {
+//   const item = GenericCreateDropdown<number>(email); // Generic 추가
+//   const selectTag = document.querySelector("#email-dropdown");
+//   selectTag.appendChild(item);
+// });
