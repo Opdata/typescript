@@ -4,6 +4,7 @@ function Person(name, age) {
 }
 
 const Ho = new Person("Ho", 29);
+
 console.log(Ho);
 
 class Person {
