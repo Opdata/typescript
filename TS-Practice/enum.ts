@@ -25,3 +25,23 @@ console.log(myCap); // "BallCap"
 
 const myHood = Cap.Hood;
 console.log(Cap.Hood); //"Hood"
+
+/* Enum Example */
+enum Answer {
+  Yes = "Y",
+  No = "N",
+}
+
+function Question(answer: Answer) {
+  if (answer === Answer.Yes) {
+    console.log("pass");
+  }
+  if (answer === Answer.No) {
+    console.log("fail");
+  }
+}
+
+Question(Answer.Yes); // Answer Enum 의 값을 전달하기 때문에
+// Question("Yes"); // Error
+// Question("N"); // Error
+// Question("NO"); // Error
