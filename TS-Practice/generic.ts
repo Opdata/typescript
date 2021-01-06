@@ -36,3 +36,17 @@ function logTextLength<T>(text: T[]): T[] {
 }
 
 logTextLength<string>(["hi"]);
+
+/* Generic Constraints2 */
+
+interface lengthType {
+  length: number;
+}
+
+function TextLength<T extends lengthType>(text: T): T {
+  text.length;
+  return text;
+}
+
+TextLength("A");
+TextLength({ length: 10 });
