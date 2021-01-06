@@ -27,3 +27,12 @@ interface Dropdown<T> {
 }
 
 const GenericInterfaceObj: Dropdown<string> = { value: "hi", selected: false };
+
+/* Generic Constraints */
+
+function logTextLength<T>(text: T[]): T[] {
+  console.log(text.length); // text의 타입을 배열로 제한해주어서 .length 사용 가능
+  return text;
+}
+
+logTextLength<string>(["hi"]);
