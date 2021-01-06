@@ -31,6 +31,7 @@ const GenericInterfaceObj: Dropdown<string> = { value: "hi", selected: false };
 /* Generic Constraints */
 
 function logTextLength<T>(text: T[]): T[] {
+  // text의 타입을 배열로 제한
   console.log(text.length); // text의 타입을 배열로 제한해주어서 .length 사용 가능
   return text;
 }
@@ -44,9 +45,28 @@ interface lengthType {
 }
 
 function TextLength<T extends lengthType>(text: T): T {
+  // 문자열로 호출 및 해당 .length의 타입은 lengthType interface 에 의해
+  // legnth 의 타입은 number로 제한
   text.length;
   return text;
 }
 
 TextLength("A");
 TextLength({ length: 10 });
+
+/* Generic Constraints keyof */
+
+interface newShoes {
+  name: string;
+  size: number;
+  brand: string;
+}
+
+function getShoes<T extends keyof newShoes>(item: T): T {
+  // keyof 예약어를 통한 제한
+  // newShoes interface의 키만 들어갈 수 있게 타입을 제한
+  return item;
+}
+
+getShoes("name");
+getShoes("brand");
