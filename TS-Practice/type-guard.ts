@@ -25,3 +25,15 @@ if ((Ho as Developer).skill) {
   const age = (Ho as Person).age;
   console.log(age);
 }
+
+/* 타입 가드 사용하여 타입 분류 예시 */
+function isDeveloper(target: Developer | Person): target is Developer {
+  // is 예약어를 사용
+  return (target as Developer).skill !== undefined;
+}
+
+if (isDeveloper(Ho)) {
+  Ho.skill;
+} else {
+  Ho.age;
+}
