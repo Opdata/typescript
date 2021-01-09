@@ -39,3 +39,7 @@ const detailItem: DetailDropDown<string> = {
   value: "hello",
   tag: "inference",
 };
+
+// Best Common Type
+
+let arr = [0, 1, null]; // number, null로 구성, Best Common Type 알고리즘으로 다른 타입들과 가장 잘 호환되는 타입을 선정
