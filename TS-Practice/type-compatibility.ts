@@ -26,3 +26,24 @@ let sum = function (a: number, b: number) {
 
 add = sum; // Error
 sum = add; // OK
+
+/* generic type compatibility */
+interface empty<T> {
+  //
+}
+
+let empty1: empty<string>;
+let empty2: empty<number>;
+
+empty1 = empty2; // OK
+empty2 = empty1; // OK
+
+interface noempty<T> {
+  data: T;
+}
+
+let noempty1: noempty<string>;
+let noempty2: noempty<number>;
+
+noempty1 = noempty2; // Error
+noempty2 = noempty1; // Error
