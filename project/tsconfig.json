@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "target": "ES5",
+    "outDir": "./built", // TS 파일 경로
+    "moduleResolution": "Node"
+  },
+  "include": ["./src/**/*"] // 어떤 폴더를 대상으로 타입스크립트를 컴파일 할 것인지
+}
