@@ -1,3 +1,6 @@
+import axios from 'axios';
+import * as Chart from 'chart.js'; // @types/chart.js
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -7,9 +10,7 @@ function getUnixTimestamp(date: Date) {
   return new Date(date).getTime();
 }
 
-// DOM 관련 타입에서 Element > HTMLElement > 구체적인 태그 // 순으로 구체적인 타입이 있다.
-
-// DOM
+// DOM , DOM 관련 타입에서 Element > HTMLElement > 구체적인 태그 // 순으로 구체적인 타입이 있다.
 const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
 const deathsTotal = $('.deaths') as HTMLParagraphElement;
 const recoveredTotal = $('.recovered') as HTMLParagraphElement;
@@ -39,7 +40,7 @@ function createSpinnerElement(id: string): HTMLElement {
 
 // state
 let isDeathLoading = false;
-let isRecoveredLoading = false;
+const isRecoveredLoading = false;
 
 // api
 function fetchCovidSummary() {
@@ -181,7 +182,7 @@ async function setupData() {
 }
 
 function renderChart(data: any, labels: any) {
-  var ctx = $('#lineChart').getContext('2d');
+  const ctx = $('#lineChart').getContext('2d');
   Chart.defaults.global.defaultFontColor = '#f5eaea';
   Chart.defaults.global.defaultFontFamily = 'Exo 2';
   new Chart(ctx, {
