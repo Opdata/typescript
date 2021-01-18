@@ -9,8 +9,9 @@ import {
 } from './covid/index'; // Type Module
 
 // utils
-function $(selector: string) {
-  return document.querySelector(selector);
+function $<T extends HTMLElement = HTMLDivElement>(selector: string) {
+  const element = document.querySelector(selector);
+  return element as T;
 }
 
 function getUnixTimestamp(date: Date | string): number {
@@ -18,17 +19,15 @@ function getUnixTimestamp(date: Date | string): number {
 }
 
 // DOM , DOM 관련 타입에서 Element > HTMLElement > 구체적인 태그 // 순으로 구체적인 타입이 있다.
-const confirmedTotal = $('.confirmed-total') as HTMLSpanElement;
-const deathsTotal = $('.deaths') as HTMLParagraphElement;
-const recoveredTotal = $('.recovered') as HTMLParagraphElement;
-const lastUpdatedTime = $('.last-updated-time') as HTMLParagraphElement;
-const rankList = $('.rank-list') as HTMLOListElement;
-const deathsList = $('.deaths-list') as HTMLOListElement;
-const recoveredList = $('.recovered-list') as HTMLOListElement;
-const deathSpinner = createSpinnerElement('deaths-spinner') as HTMLDivElement;
-const recoveredSpinner = createSpinnerElement(
-  'recovered-spinner'
-) as HTMLDivElement;
+const confirmedTotal = $<HTMLSpanElement>('.confirmed-total');
+const deathsTotal = $<HTMLParagraphElement>('.deaths');
+const recoveredTotal = $<HTMLParagraphElement>('.recovered');
+const lastUpdatedTime = $<HTMLParagraphElement>('.last-updated-time');
+const rankList = $<HTMLOListElement>('.rank-list');
+const deathsList = $<HTMLOListElement>('.deaths-list');
+const recoveredList = $<HTMLOListElement>('.recovered-list');
+const deathSpinner = createSpinnerElement('deaths-spinner');
+const recoveredSpinner = createSpinnerElement('recovered-spinner');
 
 function createSpinnerElement(id: string): HTMLDivElement {
   const wrapperDiv = document.createElement('div');
@@ -61,7 +60,7 @@ enum CovidStatus {
 }
 
 function fetchCountryInfo(
-  countryName: string,
+  countryName: string | undefined,
   status: CovidStatus
 ): Promise<AxiosResponse<CountryInfoResponse>> {
   // params: confirmed, recovered, deaths
@@ -86,7 +85,7 @@ async function handleListClick(event: MouseEvent) {
     event.target instanceof HTMLParagraphElement ||
     event.target instanceof HTMLSpanElement
   ) {
-    selectedId = event.target.parentElement.id;
+    selectedId = event.target.parentElement?.id;
   }
   if (event.target instanceof HTMLLIElement) {
     selectedId = event.target.id;
@@ -139,7 +138,7 @@ function setDeathsList(data: CountryInfoResponse) {
 }
 
 function clearDeathList() {
-  deathsList.innerHTML = null;
+  deathsList.innerHTML = '';
 }
 
 function setTotalDeathsByCountry(data: CountryInfoResponse) {
@@ -166,7 +165,7 @@ function setRecoveredList(data: CountryInfoResponse) {
 }
 
 function clearRecoveredList() {
-  recoveredList.innerHTML = null;
+  recoveredList.innerHTML = '';
 }
 
 function setTotalRecoveredByCountry(data: CountryInfoResponse) {
@@ -204,7 +203,10 @@ function renderChart(data: Array<number>, labels: Array<string>) {
   const ctx = lineChart.getContext('2d'); 
   */
 
-  const ctx = ($('#lineChart') as HTMLCanvasElement).getContext('2d'); // 해결법 1 사용
+  const ctx = $<HTMLCanvasElement>('#lineChart').getContext('2d'); // 해결법 1 사용
+  if (!ctx) {
+    return;
+  }
   Chart.defaults.global.defaultFontColor = '#f5eaea';
   Chart.defaults.global.defaultFontFamily = 'Exo 2';
   new Chart(ctx, {
