@@ -7,8 +7,7 @@
     "lib": ["ES2015", "DOM", "DOM.Iterable"], // Promise, DOM 관련 설정
     "noImplicitAny": true,
     "typeRoots": ["./node_modules/@types","./types"], // 타입스크립트를 지원하는 라이브러리, 개별 라이브러리 로드 
-    "strict": true
-    
+    "strict": true // strict 설정시, strictNullChecks, strictFunctionTypes, strictBindCallApply, strictPropertyInitialization, noImplicitThis, alwaysStrict 가 true 가 된다.
   },
   "include": ["./src/**/*"] // 어떤 폴더를 대상으로 타입스크립트를 컴파일 할 것인지
 }
