@@ -34,7 +34,7 @@ export interface CovidSummaryResponse {
 
 /* fetchCountryInfo Types */
 
-interface CountryInfo {
+export interface CountryInfo {
   Country: string;
   CountryCode: string;
   Province: string;
