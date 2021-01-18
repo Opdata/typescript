@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "target": "ES5",
-    "outDir": "./built", // TS 파일 경로
+    "outDir": "./dist", // TS 파일 경로
     "moduleResolution": "Node",
     "lib": ["ES2015", "DOM", "DOM.Iterable"], // Promise, DOM 관련 설정
     "noImplicitAny": true,
