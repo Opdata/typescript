@@ -27,4 +27,16 @@ const person2: {
   role:[2, 'author'], // 위의 타입와 똑같은 순서로 값을 넣어야 한다.
 }
 
+enum NumberRole { // 처음 값에 5을 넣으면 5부터 시작하여 증가값이 자동으로 들어간다, 넣지 않으면 0부터 시작
+  ADMIN = 5,
+  AUTHOR,
+  MIN,
+}
+
+enum StringRole { // 문자열 그대로 입력가능, 문자열을 안넣어준다면 숫자가 들어간다.
+  CALL = "CALL",
+  HEIGHT = "HEIGHT",
+  WIDTH = "WIDTH",
+}
+
 console.log(person.name);
